@@ -1,23 +1,61 @@
 package cesur.spring.andrea.model;
 
-
+import cesur.spring.andrea.validators.FormatoMail;
+import cesur.spring.andrea.validators.Formatocode;
+import cesur.spring.andrea.validators.NumeroPositivo;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
+/*@Data
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor No funcionan las anotaciones aun importando las librerías y añadiedo la dependencia en el pom*/
 public class Employee {
 
-	//@NumeroPositivo
-	int id; // Debe ser un número positivo.
+	@NumeroPositivo
+	int id;
 	@NotBlank
-	String name; // No debe ser vacío o nulo.
-	//@FormatoMail
-	String email; // Debe ser un correo electrónico válido.
-	//@Formatocode
-	String employeeCode; //Un código de empleado que sigue un patrón específico definido con una expresión regular. Patrón del código: (Ejemplo: "EMP-dep-1234"). Crear un patrón de expresión regular (regex) para validar un código de empleado del estilo "EMP-dep-1234", donde "dep" debería ser reemplazado por las 3 primeras letras del nombre del departamento. 
-	
+	String name;
+	@FormatoMail
+	String email;
+	@Formatocode
+	String employeeCode;
+
+	public Employee(int id, @NotBlank String name, String email, String employeeCode) {
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.employeeCode = employeeCode;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getEmployeeCode() {
+		return employeeCode;
+	}
+
+	public void setEmployeeCode(String employeeCode) {
+		this.employeeCode = employeeCode;
+	}
+
 }
